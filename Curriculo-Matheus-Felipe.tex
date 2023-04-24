@@ -1,0 +1,171 @@
+\documentclass{article}
+\usepackage[cm]{fullpage}
+\usepackage{color}
+\usepackage{hyperref}
+
+\hypersetup{breaklinks=true,%
+pagecolor=white,%
+colorlinks=true,%
+linkcolor=cyan,%
+urlcolor=MyDarkBlue}
+
+\definecolor{MyDarkBlue}{rgb}{0,0.0,0.45}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Formatting parameters  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newlength{\tabin}
+\setlength{\tabin}{1em}
+\newlength{\secsep}
+\setlength{\secsep}{0.1cm}
+
+\setlength{\parindent}{0in}
+\setlength{\parskip}{0in}
+\setlength{\itemsep}{0in}
+\setlength{\topsep}{0in}
+\setlength{\tabcolsep}{0in}
+
+\definecolor{contactgray}{gray}{0.3}
+\pagestyle{empty}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Template Definitions  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\lineunder}{\vspace*{-8pt} \\ \hspace*{-6pt} \hrulefill \\ \vspace*{-15pt}}
+\newcommand{\name}[1]{\begin{center}\textsc{\Huge#1}\\\end{center}}
+\newcommand{\program}[1]{\begin{center}\textsc{#1}\end{center}}
+\newcommand{\contact}[1]{\begin{center}\color{contactgray}{\small#1}\end{center}}
+
+\newenvironment{tabbedsection}[1]{
+  \begin{list}{}{
+      \setlength{\itemsep}{0pt}
+      \setlength{\labelsep}{0pt}
+      \setlength{\labelwidth}{0pt}
+      \setlength{\leftmargin}{\tabin}
+      \setlength{\rightmargin}{\tabin}
+      \setlength{\listparindent}{0pt}
+      \setlength{\parsep}{0pt}
+      \setlength{\parskip}{0pt}
+      \setlength{\partopsep}{0pt}
+      \setlength{\topsep}{#1}
+    }
+  \item[]
+}{\end{list}}
+
+\newenvironment{nospacetabbing}{
+    \begin{tabbing}
+}{\end{tabbing}\vspace{-1.2em}}
+
+\newenvironment{resume_header}{}{\vspace{0pt}}
+
+
+\newenvironment{resume_section}[1]{
+  \filbreak
+  \vspace{2\secsep}
+  \textsc{\large#1}
+  \lineunder
+  \begin{tabbedsection}{\secsep}
+}{\end{tabbedsection}}
+
+\newenvironment{resume_subsection}[2][]{
+  \textbf{#2} \hfill {\footnotesize #1} \hspace{2em}
+  \begin{tabbedsection}{0.5\secsep}
+}{\end{tabbedsection}}
+
+\newenvironment{subitems}{
+  \renewcommand{\labelitemi}{-}
+  \begin{itemize}
+      \setlength{\labelsep}{1em}
+}{\end{itemize}}
+
+\newenvironment{resume_employer}[4]{
+  \vspace{\secsep}
+  \textbf{#1} \\ 
+  \indent {\small #2} \hfill {\footnotesize#3 (#4)}
+  \begin{tabbedsection}{0pt}
+  \begin{subitems}
+}{\end{subitems}\end{tabbedsection}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     Start Document     %
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\begin{resume_header}
+\name{Matheus Felipe}
+\program{Engenheiro da Computação -- Técnico em Multimidia}
+\contact{\href{mailto:matheus.felipe337@gmail.com}{matheus.felipe337@gmaill.com} \hspace{2cm} +55-11-996315436 \hspace{2cm} \href{https://www.github.com/Ndrake337}{Github.com/Ndrake337}}
+\end{resume_header}
+
+\begin{resume_section}{Sobre Mim}
+  \begin{nospacetabbing}
+
+  \textbf{Hard Skills}  \= C/C++; Python; Javacript/Typescript; Node.JS; Linux; Git/GitHub; SQL Server; Alteryx; Java; \\* \> Tableau; React/React Native; Next.js; Express; Fastify; \\\\*
+  \textbf{Soft Skills}  \> Metodologia ágil; Comunicação; Clean Code;\\*
+  \textbf{Idiomas}   \> Inglês Intermediário; Espanhol Basico\\*
+  \textbf{Design} \> Adobe Photoshop; Adobe After Effects; Adobe Illustrator; Figma;\\*
+  \textbf{Interesses} \>  Desenvolvimento Back-end; Ciencia de Dados; Desnvolvimento Front-End (Mobile e Web);\\*
+  \end{nospacetabbing}
+
+\end{resume_section}
+
+\begin{resume_section}{Experiencia Profissional}
+  \begin{resume_employer}{Itaú Unibanco}{Analista de Engenharia de TI Junior}{São Paulo, SP}{Fev/21 - Fev/22}
+    \item Criação de Scripts automatizado em VBA. 
+    \item Criação de Scripts Python e Alteryx para extração de dados e Preparação de dados.
+    \item Manutenção de bases de dados nos ambientes Hadoop/SQL/SAS/ATHENA.
+    \item Construção de Paineis para visualização de dados em Tableau.
+    \\*
+  \end{resume_employer}
+  
+  \begin{resume_employer}{Itaú Unibanco}{Estagiário em Decision Science Crédito}{São Paulo, SP}{Fev/21 - Fev/22}
+    \item Criação e manutenção de Scripts SAS para geração de Bases e indicadores de crédito.
+    \item Criação e manutenção de fluxos Alteryx visando CDP (AWS).
+    \item Construção de Paineis para visualização de dados em Tableau.
+    \\*
+  \end{resume_employer}
+  
+  \begin{resume_employer}{Itgoal}{Estagiário em Back-end}{São Paulo, SP}{Mar/20 - Nov/20}
+    \item	Desenvolvimento de automações e Scripts para sistemas Zoho.
+    \item	Construção de Dashboards, utilizando SQL em Zoho Analytics.
+    \item	Integração de APIs.
+    \item	Helpdesk para Suporte.
+  \end{resume_employer}
+\end{resume_section}
+
+
+\begin{resume_section}{Projetos Pessoais}
+  \begin{resume_subsection}[(Julho-2022)]{Projeto Integrador - Estoque Inteligente}
+    \begin{subitems}
+      \item Idealizado junto a um grupo de 4 pessoas, o projeto visa criar uma prateleira inteligente capaz de detereminar a quantidade de items sobre sua base baseado no peso médio do item
+      \item Desenvolvimento dos sistemas Web (Front-End e Back-End)
+      \item Hospedagem de aplicação Web desenvolvida em React hospedada em github no AWS usando Pipelines
+      \item Deploy de API criada em Flask em ambiente produtivo via Heroku
+    \end{subitems}
+  \end{resume_subsection}
+\end{resume_section}
+
+\begin{resume_section}{Educação}
+  \begin{resume_subsection}[Bacharelado em Engenharia da Computação, (2019--Present)]{Centro Universitário SENAC}
+    \begin{subitems}
+      \item Aplicação pratica de Algoritimos de Computação em C.
+      \item Utilização de ambientes Linux em maquinas virtuais.
+      \item	Práticas em construção de dispositivos IoT integrados na nuvem com Microcontroladores.
+      \item Conhecimento em circuitos integrados.
+      \\*
+    \end{subitems}
+  \end{resume_subsection}
+  
+  \begin{resume_subsection}[Técnico em Multimidia, (2017--2018)]{ETEC Jornalista Roberto Marinho}
+    \begin{subitems}
+      \item Edição de Imagens, Som, Animação e Video
+      \item Tecnicas de UX/UI para Web
+     \end{subitems}
+  \end{resume_subsection}
+\end{resume_section}
+
+\end{document}
